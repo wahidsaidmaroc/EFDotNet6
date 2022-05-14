@@ -1,0 +1,41 @@
+USE [EFDotNet]
+GO
+/****** Object:  Table [dbo].[T_Etudiant]    Script Date: 14/05/2022 15:29:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[T_Etudiant](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nom] [nvarchar](50) NOT NULL,
+	[prenom] [nvarchar](50) NOT NULL,
+	[dateCreation] [datetime] NULL,
+	[note] [decimal](4, 2) NULL,
+	[_idGroup] [int] NOT NULL,
+ CONSTRAINT [PK_T_Etudiant] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[T_Groupe]    Script Date: 14/05/2022 15:29:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[T_Groupe](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nomGroup] [nvarchar](50) NULL,
+ CONSTRAINT [PK_T_Groupe] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[T_Etudiant]  WITH CHECK ADD  CONSTRAINT [FK_T_Etudiant_T_Groupe] FOREIGN KEY([_idGroup])
+REFERENCES [dbo].[T_Groupe] ([id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[T_Etudiant] CHECK CONSTRAINT [FK_T_Etudiant_T_Groupe]
+GO
