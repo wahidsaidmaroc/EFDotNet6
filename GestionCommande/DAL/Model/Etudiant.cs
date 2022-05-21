@@ -15,8 +15,11 @@ namespace DAL.Model
         [Key]
         [Column(name:"id")]
         public int idEtudiant { get; set; }
+
         public DateTime dateCreation { get; set; }
+
         public string? nom { get; set; }
+
         public string? prenom { get; set; }
         public decimal note { get; set; }
         public int _idGroup { get; set; }

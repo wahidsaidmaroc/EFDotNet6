@@ -13,9 +13,6 @@ namespace DAL
         {
             optionsBuilder.UseSqlServer(connectionString);
         }
-
- 
-
         public DbSet<Etudiant>? etudiants { get; set; }
     }
 }

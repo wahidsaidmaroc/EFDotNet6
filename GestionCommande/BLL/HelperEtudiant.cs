@@ -13,7 +13,6 @@ namespace BLL
         contextCommande db = new contextCommande();
         public List<Etudiant> GetEtudiants()
         {
-    
             return db.etudiants.OrderBy(a => a.nom).ToList();
         }
 
@@ -32,9 +31,34 @@ namespace BLL
             db.etudiants.Add(obj);
             db.SaveChanges();
             return obj.idEtudiant;
-
         }
 
+        public Etudiant GetEtudiant(int id)
+        {
+            return db.etudiants.Find(id);
+        }
+
+
+
+        public bool modifierEtudiant(Etudiant objNew)
+        {
+
+            var objOld = db.etudiants.Find(objNew.idEtudiant);
+            objOld.nom = objNew.nom;
+            objOld.prenom = objNew.prenom;
+            objOld.note = objNew.note;
+            db.SaveChanges();
+            return true;
+        }
+
+
+        public bool supperimerEtudiant(int id)
+        {
+            var objOld = db.etudiants.Find(id);
+            db.etudiants.Remove(objOld);
+            db.SaveChanges();
+            return true;
+        }
 
     }
 }

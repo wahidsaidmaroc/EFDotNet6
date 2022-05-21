@@ -6,14 +6,23 @@ HelperEtudiant helperEtudiant = new HelperEtudiant();
 
 #region "Création etudiant"
 
+
+
 Etudiant obj = new Etudiant()
 { 
     dateCreation = DateTime.Now,
-    nom = "JAWAHIR", prenom = "Sanaa", note = 18, _idGroup = 1
+    nom = "SAMAH", prenom = "Khalid", note = 18, _idGroup = 1
 };
 helperEtudiant.ajouterEtudiant(obj);
 #endregion
 
+
+var objE = helperEtudiant.GetEtudiant(3);
+objE.note = 20;
+helperEtudiant.modifierEtudiant(objE);
+
+
+helperEtudiant.modifierEtudiant(obj);
 
 Console.WriteLine("La liste des etudiants : ");
 foreach (var item in helperEtudiant.GetEtudiants())
