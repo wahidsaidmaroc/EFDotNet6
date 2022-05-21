@@ -10,16 +10,29 @@ namespace BLL
 {
     public class HelperEtudiant
     {
+        contextCommande db = new contextCommande();
         public List<Etudiant> GetEtudiants()
         {
-            contextCommande db = new contextCommande();
-            return db.etudiants.ToList();
+    
+            return db.etudiants.OrderBy(a => a.nom).ToList();
         }
 
         public List<Etudiant> GetEtudiantsM()
         {
-            contextCommande db = new contextCommande();
             return db.etudiants.Where(a => a.note > 10).ToList();
+        }
+
+        public List<Etudiant> GetEtudiantsByGroup(int id)
+        {
+            return db.etudiants.Where(a => a._idGroup == id ).ToList();
+        }
+
+        public int ajouterEtudiant(Etudiant obj)
+        {
+            db.etudiants.Add(obj);
+            db.SaveChanges();
+            return obj.idEtudiant;
+
         }
 
 

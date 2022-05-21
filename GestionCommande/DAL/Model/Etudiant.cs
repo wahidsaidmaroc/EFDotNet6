@@ -19,6 +19,6 @@ namespace DAL.Model
         public string? nom { get; set; }
         public string? prenom { get; set; }
         public decimal note { get; set; }
-
+        public int _idGroup { get; set; }
     }
 }
