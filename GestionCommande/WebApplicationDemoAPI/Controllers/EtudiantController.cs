@@ -32,13 +32,13 @@ namespace WebApplicationDemoAPI.Controllers
         }
 
 
-        //[HttpGet(Name = "Get/{id}")]
-        //public Etudiant Get(int id)
-        //{
-        //    BLL.HelperEtudiant helper = new BLL.HelperEtudiant();
-        //    return helper.GetEtudiant(id);
+        [HttpGet(Name = "GetEtudiant/{id}")]
+        public IActionResult Get(int id)
+        {
+            BLL.HelperEtudiant helper = new BLL.HelperEtudiant();
+            return Ok(helper.GetEtudiant(id));
 
-        //}
+        }
 
 
         //[HttpPost(Name = "PostEtudiants")]
